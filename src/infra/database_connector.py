@@ -1,14 +1,16 @@
 import mysql.connector as mysql
 
 class DatabaseConnection:
-    def __init__(self) -> None:
-        self.connection = None
 
-    def connect(self):
+    connection = None
+
+    @classmethod
+    def connect(cls):
         db_connection = mysql.connect(
             host = "localhost",
             port = 3300,
+            database = "pipeline_db",
             user = "root",
             passwd = "my-pw"
         )
-        self.connection = db_connection
+        cls.connection = db_connection
